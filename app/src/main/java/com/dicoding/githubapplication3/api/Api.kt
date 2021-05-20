@@ -8,7 +8,7 @@ import retrofit2.http.Query
 
 interface Api {
     @GET("search/users")
-    @Headers("Authorization: token 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")
+    @Headers("Authorization: token xxx")
     fun getPencariPengguna(
         @Query("q") query: String
     ): Call<PenggunaRespons>
