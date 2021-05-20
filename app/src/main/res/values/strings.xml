@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">GithubApplication3</string>
+    <string name="tombol_pencari">tombol pencari</string>
+    <string name="mencari">Mencari</string>
+</resources>
