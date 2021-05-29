@@ -11,7 +11,13 @@ import com.dicoding.githubapplication3.databinding.ItemPenggunaBinding
 class PenggunaAdapter : RecyclerView.Adapter<PenggunaAdapter.PenggunaViewHolder>() {
     private val daftar = ArrayList<Pengguna>()
 
-    // ketika setDaftar dipanggil di viewModel, daftar pengguna akan dibersihkan, dan diisi dengan
+    private var onItemTekanHubungikembali: OnItemTekanHubungikembali? = null
+
+    fun setOnItemTekanHubungikembali (onItemTekanHubungikembali: OnItemTekanHubungikembali){
+        this.onItemTekanHubungikembali = onItemTekanHubungikembali
+    }
+
+    //ketika setDaftar dipanggil di viewModel, daftar pengguna akan dibersihkan, dan diisi dengan
     // data yang baru dan diberitahu kalau dataset berubah
     fun setDaftar(_pengguna: ArrayList<Pengguna>) {
         daftar.clear()
@@ -22,6 +28,10 @@ class PenggunaAdapter : RecyclerView.Adapter<PenggunaAdapter.PenggunaViewHolder>
     inner class PenggunaViewHolder(val binding: ItemPenggunaBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(pengguna: Pengguna) {
+            binding.root.setOnClickListener{
+                onItemTekanHubungikembali?.onItemDitekan(pengguna)
+            }
+
             binding.apply {
                 Glide.with(itemView)
                     .load(pengguna.avatar_url)
@@ -43,4 +53,8 @@ class PenggunaAdapter : RecyclerView.Adapter<PenggunaAdapter.PenggunaViewHolder>
     }
 
     override fun getItemCount(): Int = daftar.size
+
+    interface OnItemTekanHubungikembali{
+        fun onItemDitekan(data: Pengguna)
+    }
 }
