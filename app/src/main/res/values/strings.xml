@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">GithubApplication3</string>
+    <string name="app_name">Aplikasi Pengguna Github</string>
     <string name="tombol_pencari">tombol pencari</string>
     <string name="mencari">Mencari</string>
     <string name="profil_pengguna">profil pengguna</string>

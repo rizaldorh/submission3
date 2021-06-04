@@ -13,7 +13,7 @@ class PenggunaAdapter : RecyclerView.Adapter<PenggunaAdapter.PenggunaViewHolder>
 
     private var onItemTekanHubungikembali: OnItemTekanHubungikembali? = null
 
-    fun setOnItemTekanHubungikembali (onItemTekanHubungikembali: OnItemTekanHubungikembali){
+    fun setOnItemTekanHubungikembali(onItemTekanHubungikembali: OnItemTekanHubungikembali) {
         this.onItemTekanHubungikembali = onItemTekanHubungikembali
     }
 
@@ -28,7 +28,7 @@ class PenggunaAdapter : RecyclerView.Adapter<PenggunaAdapter.PenggunaViewHolder>
     inner class PenggunaViewHolder(val binding: ItemPenggunaBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(pengguna: Pengguna) {
-            binding.root.setOnClickListener{
+            binding.root.setOnClickListener {
                 onItemTekanHubungikembali?.onItemDitekan(pengguna)
             }
 
@@ -54,7 +54,7 @@ class PenggunaAdapter : RecyclerView.Adapter<PenggunaAdapter.PenggunaViewHolder>
 
     override fun getItemCount(): Int = daftar.size
 
-    interface OnItemTekanHubungikembali{
+    interface OnItemTekanHubungikembali {
         fun onItemDitekan(data: Pengguna)
     }
 }

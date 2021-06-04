@@ -28,11 +28,30 @@ class DetailPenggunaActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         val namapengguna = intent.getStringExtra(EXTRA_DATAPENGGUNA)
-        val id = intent.getIntExtra(EXTRA_ID,0)
+        val id = intent.getIntExtra(EXTRA_ID, 0)
         val avatarUrl = intent.getStringExtra(EXTRA_URL)
 
         val paket = Bundle()
         paket.putString(EXTRA_DATAPENGGUNA, namapengguna)
+
+        val sectionPagerAdapter = SectionPagerAdapter(this, supportFragmentManager, paket)
+        binding.apply {
+            viewPager.adapter = sectionPagerAdapter
+            tabs.setupWithViewPager(viewPager)
+        }
+
+        var _isCek = false
+        binding.toggleButtonFavorite.setOnClickListener {
+            _isCek = !_isCek
+            if (_isCek) {
+                if (namapengguna != null) {
+                    viewModel.tambahKeFavorite(namapengguna, id, avatarUrl!!)
+                }
+            } else {
+                viewModel.hapusDariFavorite(id)
+            }
+            binding.toggleButtonFavorite.isChecked = _isCek
+        }
 
         viewModel = ViewModelProvider(this).get(DetailPenggunaViewModel::class.java)
 
@@ -45,19 +64,19 @@ class DetailPenggunaActivity : AppCompatActivity() {
                     textViewFollowers.text = "${it.followers} Pengikut"
                     textViewFollowing.text = "${it.following} Mengikuti"
                     Glide.with(this@DetailPenggunaActivity)
-                            .load(it.avatar_url)
-                            .transition(DrawableTransitionOptions.withCrossFade())
-                            .into(imageViewProfil)
+                        .load(it.avatar_url)
+                        .transition(DrawableTransitionOptions.withCrossFade())
+                        .into(imageViewProfil)
                 }
             }
         })
 
-        var _isCek = false
+
         CoroutineScope(Dispatchers.IO).launch {
             val hitung = viewModel.cekPengguna(id)
-            withContext(Dispatchers.Main){
-                if (hitung != null){
-                    if(hitung > 0) {
+            withContext(Dispatchers.Main) {
+                if (hitung != null) {
+                    if (hitung > 0) {
                         binding.toggleButtonFavorite.isChecked = true
                         _isCek = true
                     } else {
@@ -68,21 +87,6 @@ class DetailPenggunaActivity : AppCompatActivity() {
             }
         }
 
-        binding.toggleButtonFavorite.setOnClickListener {
-            _isCek =! _isCek
-            if (_isCek){
-                viewModel.tambahKeFavorite(namapengguna, id, avatarUrl!!)
-            } else {
-                viewModel.hapusDariFavorite(id)
-            }
-            binding.toggleButtonFavorite.isChecked = _isCek
-        }
-
-        val sectionPagerAdapter = SectionPagerAdapter(this, supportFragmentManager, paket)
-        binding.apply {
-            viewPager.adapter = sectionPagerAdapter
-            tabs.setupWithViewPager(viewPager)
-        }
     }
 }
 

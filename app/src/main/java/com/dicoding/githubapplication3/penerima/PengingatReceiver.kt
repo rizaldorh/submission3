@@ -94,7 +94,6 @@ class PengingatReceiver : BroadcastReceiver() {
         } catch (e: ParseException) {
             true
         }
-
     }
 
     fun batalkanAlarm(context: Context) {

@@ -7,7 +7,7 @@ import com.dicoding.githubapplication3.data.local.FavoritePengguna
 import com.dicoding.githubapplication3.data.local.FavoritePenggunaDao
 import com.dicoding.githubapplication3.data.local.PenggunaDatabase
 
-class FavoriteViewModel(application: Application): AndroidViewModel(application) {
+class FavoriteViewModel(application: Application) : AndroidViewModel(application) {
 
     private var penggunaDao: FavoritePenggunaDao?
     private var penggunaDatabase: PenggunaDatabase?

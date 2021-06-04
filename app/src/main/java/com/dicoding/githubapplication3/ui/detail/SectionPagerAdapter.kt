@@ -8,7 +8,11 @@ import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
 import com.dicoding.githubapplication3.R
 
-class SectionPagerAdapter(private val mContext: Context, fragmentmanager: FragmentManager, data: Bundle) : FragmentPagerAdapter(fragmentmanager, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT) {
+class SectionPagerAdapter(
+    private val mContext: Context,
+    fragmentmanager: FragmentManager,
+    data: Bundle
+) : FragmentPagerAdapter(fragmentmanager, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT) {
 
     private var fragmentPaket: Bundle
 
@@ -23,7 +27,7 @@ class SectionPagerAdapter(private val mContext: Context, fragmentmanager: Fragme
 
     override fun getItem(position: Int): Fragment {
         var fragmentdata: Fragment? = null
-        when(position){
+        when (position) {
             0 -> fragmentdata = PengikutFragment()
             1 -> fragmentdata = MengikutiFragment()
         }

@@ -15,19 +15,22 @@ class MengikutiViewModel : ViewModel() {
 
     fun setDaftarMengikuti(namapengguna: String) {
         RetrofitClient.apiInstance
-                .getMengikuti(namapengguna)
-                .enqueue(object : Callback<ArrayList<Pengguna>> {
-                    override fun onResponse(call: Call<ArrayList<Pengguna>>, response: Response<ArrayList<Pengguna>>) {
-                        if (response.isSuccessful) {
-                            daftarMengikuti.postValue(response.body())
-                        }
+            .getMengikuti(namapengguna)
+            .enqueue(object : Callback<ArrayList<Pengguna>> {
+                override fun onResponse(
+                    call: Call<ArrayList<Pengguna>>,
+                    response: Response<ArrayList<Pengguna>>
+                ) {
+                    if (response.isSuccessful) {
+                        daftarMengikuti.postValue(response.body())
                     }
+                }
 
-                    override fun onFailure(call: Call<ArrayList<Pengguna>>, t: Throwable) {
-                        Log.d("Failure", t.message!!)
-                    }
+                override fun onFailure(call: Call<ArrayList<Pengguna>>, t: Throwable) {
+                    Log.d("Failure", t.message!!)
+                }
 
-                })
+            })
     }
 
     fun getDaftarMengikuti(): LiveData<ArrayList<Pengguna>> {

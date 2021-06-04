@@ -34,7 +34,10 @@ class PengikutFragment : Fragment(R.layout.fragment_follow) {
             recyclerViewPengikut.adapter = adapter
         }
         tampilMemuat(true)
-        viewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory()).get(PengikutViewModel::class.java)
+        viewModel = ViewModelProvider(
+            this,
+            ViewModelProvider.NewInstanceFactory()
+        ).get(PengikutViewModel::class.java)
         viewModel.setDaftarPengikut(namapengguna)
         viewModel.getDaftarPengikut().observe(viewLifecycleOwner, {
             if (it != null) {

@@ -11,26 +11,26 @@ import retrofit2.http.Query
 
 interface Api {
     @GET("search/users")
-    @Headers("Authorization: token MASUKKAN TOKEN")
+    @Headers("Authorization: token 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")
     fun getPencariPengguna(
         @Query("q") query: String
     ): Call<PenggunaRespons>
 
     @GET("users/{namapengguna}")
-    @Headers("Authorization: token MASUKKAN TOKEN")
+    @Headers("Authorization: token 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")
     fun getPenggunaDetail(
-            @Path("namapengguna") namapengguna: String
+        @Path("namapengguna") namapengguna: String
     ): Call<DetailPenggunaRespons>
 
-    @GET("users/{namapengguna}/followers")
-    @Headers("Authorization: token MASUKKAN TOKEN")
-    fun getPengikut(
-            @Path("namapengguna") namapengguna: String
+    @GET("users/{namapengguna}/following")
+    @Headers("Authorization: token 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")
+    fun getMengikuti(
+        @Path("namapengguna") namapengguna: String
     ): Call<ArrayList<Pengguna>>
 
-    @GET("users/{namapengguna}/following")
-    @Headers("Authorization: token MASUKKAN TOKEN")
-    fun getMengikuti(
-            @Path("namapengguna") namapengguna: String
+    @GET("users/{namapengguna}/followers")
+    @Headers("Authorization: token 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")
+    fun getPengikut(
+        @Path("namapengguna") namapengguna: String
     ): Call<ArrayList<Pengguna>>
 }

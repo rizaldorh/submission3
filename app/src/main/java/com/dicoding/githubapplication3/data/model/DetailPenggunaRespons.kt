@@ -1,6 +1,6 @@
 package com.dicoding.githubapplication3.data.model
 
-data class DetailPenggunaRespons (
+data class DetailPenggunaRespons(
         val login: String,
         val id: Int,
         val avatar_url: String,
@@ -9,4 +9,4 @@ data class DetailPenggunaRespons (
         val name: String,
         val following: Int,
         val followers: Int
-        )
+)

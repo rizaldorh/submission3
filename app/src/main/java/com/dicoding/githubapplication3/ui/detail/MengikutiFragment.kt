@@ -34,7 +34,10 @@ class MengikutiFragment : Fragment(R.layout.fragment_follow) {
             recyclerViewPengikut.adapter = adapter
         }
         tampilMemuat(true)
-        viewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory()).get(MengikutiViewModel::class.java)
+        viewModel = ViewModelProvider(
+            this,
+            ViewModelProvider.NewInstanceFactory()
+        ).get(MengikutiViewModel::class.java)
         viewModel.setDaftarMengikuti(namapengguna)
         viewModel.getDaftarMengikuti().observe(viewLifecycleOwner, {
             if (it != null) {

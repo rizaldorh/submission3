@@ -52,7 +52,7 @@ class DetailPenggunaViewModel(application: Application) : AndroidViewModel(appli
         return user
     }
 
-    fun tambahKeFavorite(datapengguna: String, id:Int, avatarUrl: String){
+    fun tambahKeFavorite(datapengguna: String, id: Int, avatarUrl: String) {
         CoroutineScope(Dispatchers.IO).launch {
             var pengguna = FavoritePengguna(
                 datapengguna,
@@ -61,13 +61,13 @@ class DetailPenggunaViewModel(application: Application) : AndroidViewModel(appli
             )
             penggunaDao?.tambahKeFavorite(pengguna)
         }
-        }
+    }
 
-    suspend fun cekPengguna(id:Int) = penggunaDao?.cekPengguna(id)
+    suspend fun cekPengguna(id: Int) = penggunaDao?.cekPengguna(id)
 
     fun hapusDariFavorite(id: Int) {
         CoroutineScope(Dispatchers.IO).launch {
             penggunaDao?.hapusDariFavorite(id)
         }
     }
-    }
+}

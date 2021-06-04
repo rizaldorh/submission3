@@ -13,7 +13,7 @@ import com.dicoding.githubapplication3.ui.main.PenggunaAdapter
 
 class FavoriteActivity : AppCompatActivity() {
 
-    private lateinit var binding : ActivityFavoriteBinding
+    private lateinit var binding: ActivityFavoriteBinding
     private lateinit var adapter: PenggunaAdapter
     private lateinit var viewModel: FavoriteViewModel
 
@@ -46,7 +46,7 @@ class FavoriteActivity : AppCompatActivity() {
         }
 
         viewModel.getFavoritePengguna()?.observe(this, {
-            if (it!=null){
+            if (it != null) {
                 val daftar = mapDaftar(it)
                 adapter.setDaftar(daftar)
             }
@@ -55,7 +55,7 @@ class FavoriteActivity : AppCompatActivity() {
 
     private fun mapDaftar(pengguna: List<FavoritePengguna>): ArrayList<Pengguna> {
         val daftarPengguna_ = ArrayList<Pengguna>()
-        for (pengguna_ in pengguna){
+        for (pengguna_ in pengguna) {
             val penggunaMapped = Pengguna(
                 pengguna_.login,
                 pengguna_.id,

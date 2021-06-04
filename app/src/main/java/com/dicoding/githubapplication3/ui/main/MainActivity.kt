@@ -89,12 +89,12 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.pengaturan_menu,menu)
+        menuInflater.inflate(R.menu.pengaturan_menu, menu)
         return super.onCreateOptionsMenu(menu)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when(item.itemId){
+        when (item.itemId) {
             R.id.favorite_menu -> {
                 Intent(this, FavoriteActivity::class.java).also {
                     startActivity(it)

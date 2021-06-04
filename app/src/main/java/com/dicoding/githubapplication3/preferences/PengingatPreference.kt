@@ -9,7 +9,7 @@ class PengingatPreference(ctxt: Context) {
         private const val PENGINGAT = "isPengingat"
     }
 
-    private val preference = ctxt.getSharedPreferences(PREFS_NAMA,Context.MODE_PRIVATE)
+    private val preference = ctxt.getSharedPreferences(PREFS_NAMA, Context.MODE_PRIVATE)
 
     fun setPengingat(value: Pengingat) {
         val pengedit = preference.edit()
@@ -17,9 +17,9 @@ class PengingatPreference(ctxt: Context) {
         pengedit.apply()
     }
 
-    fun getPengingat(): Pengingat{
+    fun getPengingat(): Pengingat {
         val pengingat_ = Pengingat()
-        pengingat_.isTeringat = preference.getBoolean(PENGINGAT,false)
+        pengingat_.isTeringat = preference.getBoolean(PENGINGAT, false)
         return pengingat_
     }
 }

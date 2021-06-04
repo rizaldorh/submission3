@@ -14,10 +14,10 @@ import retrofit2.Response
 class PenggunaViewModel : ViewModel() {
     val daftarPengguna = MutableLiveData<ArrayList<Pengguna>>()
 
-    fun setPencariPengguna(query: String){
+    fun setPencariPengguna(query: String) {
         RetrofitClient.apiInstance
             .getPencariPengguna(query)
-            .enqueue(object : Callback<PenggunaRespons>{
+            .enqueue(object : Callback<PenggunaRespons> {
                 override fun onResponse(
                     call: Call<PenggunaRespons>,
                     response: Response<PenggunaRespons>
@@ -33,7 +33,7 @@ class PenggunaViewModel : ViewModel() {
             })
     }
 
-    fun getPencariPengguna(): LiveData<ArrayList<Pengguna>>{
+    fun getPencariPengguna(): LiveData<ArrayList<Pengguna>> {
         return daftarPengguna
     }
 }
